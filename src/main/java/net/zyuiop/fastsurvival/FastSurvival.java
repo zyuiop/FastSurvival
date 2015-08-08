@@ -18,6 +18,7 @@ public class FastSurvival extends JavaPlugin {
 	public static FastSurvival instance;
 
 	public void onEnable() {
+		instance = this;
 		// Load config
 		this.saveDefaultConfig();
 
