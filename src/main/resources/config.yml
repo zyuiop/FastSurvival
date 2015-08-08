@@ -109,3 +109,4 @@ higherCrafts: true # The wooden tools are replaced by stone tools
 fasterTrees: true # The trees break completely
 fasterObisidian: true # Obsidian can be broken faster
 stoneBreaksAll: true # Any pickaxe can mine anything as if it was a diamond pickaxe
+autoUpdate: false # update the plugin automatically

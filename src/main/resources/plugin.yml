@@ -1,4 +1,10 @@
 name: FastSurvival
 main: net.zyuiop.fastsurvival.FastSurvival
-version: 1.0.$build
+version: 1.0.0
 author: zyuiop
+commands:
+  update:
+    permission: fastsurvival.update
+permissions:
+  fastsurvival.update:
+    default: op
