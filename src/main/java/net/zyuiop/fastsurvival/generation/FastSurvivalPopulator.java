@@ -1,18 +1,13 @@
 package net.zyuiop.fastsurvival.generation;
 
-import net.minecraft.server.v1_8_R1.ChunkSnapshot;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 import java.util.*;
 
-/**
- * Created by charles on 14/08/2014.
- */
 public class FastSurvivalPopulator extends BlockPopulator {
 
     private List<BlocksRule> blocks = new ArrayList<>();
@@ -43,14 +38,6 @@ public class FastSurvivalPopulator extends BlockPopulator {
                 z++;
             }
             x++;
-        }
-
-        CraftWorld handle = (CraftWorld) world;
-		// Trying to generate more caves.
-        if (random.nextInt(1000) <= 850) {
-            new WorldGenCaves().a(handle.getHandle().chunkProviderServer, handle.getHandle(), chunk.getX(), chunk.getZ(), new ChunkSnapshot());
-        } else if (random.nextInt(1000) <= 750) {
-            new WorldGenCanyon().a(handle.getHandle().chunkProviderServer, handle.getHandle(), chunk.getX(), chunk.getZ(), new ChunkSnapshot());
         }
 
         for (BlocksRule bloc : blocks) {
