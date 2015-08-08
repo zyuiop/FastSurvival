@@ -30,6 +30,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
@@ -41,10 +44,11 @@ import java.net.URL;
 /**
  * @author zyuiop
  */
-public class Updater {
+public class Updater implements Listener {
 	private final URL versionUrl;
 	private URL downloadUrl = null;
 	private boolean updates = false;
+	private String targetVersion = null;
 
 	public Updater() throws MalformedURLException {
 		versionUrl = new URL("http://archive.zyuiop.net/FastSurvival/LATEST.txt");
@@ -86,6 +90,7 @@ public class Updater {
 
 			if (_build > build) {
 				Bukkit.getLogger().info("Update available ! Run /update to update the plugin.");
+				this.targetVersion = upstreamVersion;
 				updates = true;
 				downloadUrl = new URL("http://archive.zyuiop.net/FastSurvival/fastsurvival-" + _build + ".jar");
 			}
@@ -138,8 +143,13 @@ public class Updater {
 			Bukkit.getLogger().info("Delete failed / Scheduled delete on exit.");
 		}
 		sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.GREEN + "The plugin was updated successfully !");
-		try {
-			sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.YELLOW + "FastSurvival is now at version " + ChatColor.GREEN + FastSurvival.instance.getDescription().getVersion());
-		} catch (NullPointerException ignored) {}
+		sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.YELLOW + "FastSurvival is now at version " + ChatColor.GREEN + targetVersion);
+	}
+
+	@EventHandler
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		if (event.getPlayer().isOp() && updates) {
+			event.getPlayer().sendMessage(ChatColor.YELLOW + "[Updater] There is an update available for FastSurvival. Run /update to download and install.");
+		}
 	}
 }

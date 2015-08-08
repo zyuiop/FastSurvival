@@ -51,6 +51,7 @@ public class FastSurvival extends JavaPlugin {
 		instance = this;
 		try {
 			updater = new Updater();
+			Bukkit.getPluginManager().registerEvents(updater, this);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
