@@ -1,5 +1,4 @@
 name: FastSurvival
 main: net.zyuiop.fastsurvival.FastSurvival
 version: 1.0
-load: STARTUP
 author: zyuiop

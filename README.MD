@@ -20,7 +20,6 @@ You can download the plugin here : [https://drone.io/github.com/zyuiop/FastSurvi
 License
 =======
 
-This plugin is partially based on SamaGames' UHCRun source code. 
-Copyright (C) 2015 zyuiop / Elydra Network
-
-This plugin is licensed under GNU General Public License.
+This program is licensed under MIT License
+You can find this license in the LICENSE file
+Copyright (C) 2015 zyuiop
