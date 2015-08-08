@@ -58,7 +58,7 @@ public class FastSurvival extends JavaPlugin {
 		// Load config
 		this.saveDefaultConfig();
 
-		getCommand("update").setExecutor(new CommandUpdate());
+		Bukkit.getPluginCommand("update").setExecutor(new CommandUpdate());
 
 		Configuration configuration = getConfig();
 
