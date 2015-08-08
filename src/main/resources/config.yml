@@ -1,0 +1,111 @@
+generator:
+  # The generators adds blocks to the generation
+  # The blocks are ADDED.
+  # If you want to remove the natural generations of the blocks, add the following line to the rule block:
+  #       deleteOthers: true
+  enabled: true
+  rules:
+  - material: DIAMOND_ORE
+    data: 0
+    perChunk: 4
+    minY: 0
+    maxY: 64
+    clusterSize: 5
+  - material: IRON_ORE
+    data: 0
+    perChunk: 2
+    minY: 0
+    maxY: 64
+    clusterSize: 15
+  - material: GOLD_ORE
+    data: 0
+    perChunk: 2
+    minY: 0
+    maxY: 64
+    clusterSize: 8
+  - material: LAPIS_ORE
+    data: 0
+    perChunk: 3
+    minY: 0
+    maxY: 64
+    clusterSize: 4
+  - material: OBSIDIAN
+    data: 0
+    perChunk: 4
+    minY: 0
+    maxY: 32
+    clusterSize: 6
+
+lootReplacer:
+  enabled: true
+  rules:
+  - sourceMaterial: IRON_ORE
+    targetMaterial: IRON_INGOT
+    targetMutltiplier: 2
+  - sourceMaterial: GOLD_ORE
+    targetMaterial: GOLD_INGOT
+    targetMutltiplier: 2
+  - sourceMaterial: SAND
+    targetMaterial: GLASS
+    targetMutltiplier: 2
+  - sourceMaterial: SAPLING
+    targetMaterial: APPLE
+    targetProbability: 0.1
+  - sourceMaterial: GRAVEL
+    targetMaterial: ARROW
+    targetProbability: 0.75
+  - sourceMaterial: FLINT
+    targetMaterial: ARROW
+    targetProbability: 0.75
+  - sourceMaterial: COAL
+    targetMaterial: TORCH
+    targetMutltiplier: 3
+  - sourceMaterial: DIAMOND
+    targetMaterial: DIAMOND
+    targetMutltiplier: 2
+  - sourceMaterial: CACTUS
+    targetMaterial: LOG
+    targetMutltiplier: 2
+  - sourceMaterial: IRON_ORE
+    targetMaterial: IRON_INGOT
+    targetMutltiplier: 2
+  - sourceMaterial: RAW_BEEF
+    targetMaterial: COOKED_BEEF
+    targetMultiplier: 2
+  - sourceMaterial: MUTTON
+    targetMaterial: COOKED_MUTTON
+    targetMultiplier: 2
+  - sourceMaterial: PORK
+    targetMaterial: GRILLED_PORK
+    targetMultiplier: 2
+  - sourceMaterial: RABBIT
+    targetMaterial: COOKED_RABBIT
+    targetMultiplier: 2
+  - sourceMaterial: RAW_CHICKEN
+    targetMaterial: COOKED_CHICKEN
+    targetMultiplier: 2
+  - sourceMaterial: ARROW # Skeleton loots
+    targetMaterial: ARROW
+    targetMultiplier: 2
+
+entitiesDrops:
+  enabled: true
+  rules:
+  - entityType: SKELETON
+    material: BOW
+    type: repair
+  - entityType: PIG
+    material: LEATHER
+    type: add
+    randomMin: 1
+    randomMax: 6
+  - entityType: SHEEP
+    material: LEATHER
+    type: add
+    randomMin: 1
+    randomMax: 6
+
+higherCrafts: true # The wooden tools are replaced by stone tools
+fasterTrees: true # The trees break completely
+fasterObisidian: true # Obsidian can be broken faster
+stoneBreaksAll: true # Any pickaxe can mine anything as if it was a diamond pickaxe
