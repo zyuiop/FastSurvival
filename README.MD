@@ -21,5 +21,9 @@ License
 =======
 
 This program is licensed under MIT License
+
 You can find this license in the LICENSE file
+
 Copyright (C) 2015 zyuiop
+
+This program comes with an API licensed under GNU LGPL, contained in the src/main/com/ folder.

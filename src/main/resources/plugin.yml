@@ -2,9 +2,13 @@ name: FastSurvival
 main: net.zyuiop.fastsurvival.FastSurvival
 version: 1.0.0
 author: zyuiop
+load: STARTUP
+authors: [Skygrope, Sytorax]
 commands:
   update:
     permission: fastsurvival.update
+  credits:
+    description: Credits for the plugin
 permissions:
   fastsurvival.update:
     default: op

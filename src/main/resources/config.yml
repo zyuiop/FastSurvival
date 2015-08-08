@@ -105,6 +105,11 @@ entitiesDrops:
     randomMin: 1
     randomMax: 6
 
+netherGen:
+  enabled: true
+  probability: 0.01
+  log: false
+
 higherCrafts: true # The wooden tools are replaced by stone tools
 fasterTrees: true # The trees break completely
 fasterObisidian: true # Obsidian can be broken faster

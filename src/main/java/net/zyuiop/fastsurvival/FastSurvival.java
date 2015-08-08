@@ -59,6 +59,7 @@ public class FastSurvival extends JavaPlugin {
 		this.saveDefaultConfig();
 
 		Bukkit.getPluginCommand("update").setExecutor(new CommandUpdate());
+		Bukkit.getPluginCommand("credits").setExecutor(new CommandCredit());
 
 		Configuration configuration = getConfig();
 
@@ -99,7 +100,12 @@ public class FastSurvival extends JavaPlugin {
 		}
 
 		if (configuration.getBoolean("autoUpdate", false)) {
-			Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> updater.doUpdate(Bukkit.getConsoleSender()), 20, 60*30*20);
+			Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> updater.doUpdate(Bukkit.getConsoleSender()), 20, 60 * 30 * 20);
+		}
+
+		if (configuration.getBoolean("netherGen.enabled", false)) {
+			Bukkit.getPluginManager().registerEvents(new net.zyuiop.fastsurvival.nethers.WorldGenerator(configuration.getDouble("netherGen.probability", 0.01), configuration.getBoolean("netherGen.log", false)), this);
+			Bukkit.getLogger().info("Nether generation is enabled !");
 		}
 	}
 
