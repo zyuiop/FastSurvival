@@ -129,19 +129,21 @@ public class Updater implements Listener {
 		Bukkit.getServer().getPluginManager().disablePlugin(outdated);
 		outdated.getPluginLoader().disablePlugin(outdated);
 
-		try {
+		/*try {
 			Plugin pl = Bukkit.getServer().getPluginManager().loadPlugin(target);
 			pl.getPluginLoader().enablePlugin(pl);
 		} catch (InvalidPluginException | InvalidDescriptionException e) {
 			e.printStackTrace();
 			sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.RED + "Failed to launch new version. Check the log for more information.");
 			return;
-		}
+		}*/
 
 		if (!plugin.delete()) {
 			plugin.deleteOnExit();
 			Bukkit.getLogger().info("Delete failed / Scheduled delete on exit.");
 		}
+
+		Bukkit.reload();
 		sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.GREEN + "The plugin was updated successfully !");
 		sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.YELLOW + "FastSurvival is now at version " + ChatColor.GREEN + targetVersion);
 	}
