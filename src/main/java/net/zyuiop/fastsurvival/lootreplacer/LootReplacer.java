@@ -37,7 +37,7 @@ public class LootReplacer implements Listener {
 	}
 
 	public static boolean isMarked(ItemStack stack) {
-		return stack.getItemMeta().getDisplayName().startsWith("§r");
+		return stack.getItemMeta() != null && stack.getItemMeta().getDisplayName() != null && stack.getItemMeta().getDisplayName().startsWith("§r");
 	}
 
 	public static ItemStack mark(ItemStack stack) {
