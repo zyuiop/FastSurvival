@@ -50,13 +50,13 @@ public class WorldGenerator implements Listener {
 			}
 
 			try {
-				int perChunk = Integer.parseInt((String) map.get("perChunk"));
-				int minY = Integer.parseInt((String) map.get("minY"));
-				int maxY = Integer.parseInt((String) map.get("maxY"));
-				int clusterSize = Integer.parseInt((String) map.get("clusterSize"));
+				int perChunk = (Integer) map.get("perChunk");
+				int minY = (Integer) map.get("minY");
+				int maxY = (Integer) map.get("maxY");
+				int clusterSize = (Integer) map.get("clusterSize");
 				int data = 0;
 				if (map.containsKey("data"))
-					data = Integer.parseInt((String) map.get("data"));
+					data = (Integer) map.get("data");
 
 				if (!map.containsKey("deleteOthers") || !Boolean.parseBoolean((String) map.get("deleteOthers"))) {
 					populator.registerRule(new BlocksRule(material, data, perChunk, minY, maxY, clusterSize));

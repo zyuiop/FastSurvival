@@ -47,13 +47,13 @@ public class LootRule {
 
 		int multiplier = 1;
 		try {
-			multiplier = Integer.parseInt((String) config.get("targetMultiplier"));
+			multiplier = (Integer) config.get("targetMultiplier");
 		} catch (Exception ignored) {}
 
 		LootRule rule;
 		if (config.containsKey("targetProbability")) {
 			try {
-				rule = new LootRule(source, new MaterialData(target, targetData), multiplier, Double.parseDouble((String) config.get("targetProbability")));
+				rule = new LootRule(source, new MaterialData(target, targetData), multiplier, (Double) config.get("targetProbability"));
 			} catch (Exception ignored) {
 				rule = new LootRule(source, new MaterialData(target, targetData), multiplier);
 			}

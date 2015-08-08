@@ -42,8 +42,8 @@ public class EntitiesDropsReplacer implements Listener {
 					break;
 				case "add":
 					try {
-						int randomMin = Integer.parseInt((String) map.get("randomMin"));
-						int randomMax = Integer.parseInt((String) map.get("randomMax"));
+						int randomMin = (Integer) map.get("randomMin");
+						int randomMax = (Integer) map.get("randomMax");
 						rules.put(type, new AddLootRule(material, randomMin, randomMax));
 					} catch (Exception e) {
 						Bukkit.getLogger().warning("Could not add rule.");
