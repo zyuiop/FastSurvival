@@ -3,6 +3,7 @@ main: net.zyuiop.fastsurvival.FastSurvival
 version: 1.0.0
 author: zyuiop
 load: STARTUP
+softdepend: [BukkitLibs]
 authors: [Skygrope, Sytorax]
 commands:
   update:

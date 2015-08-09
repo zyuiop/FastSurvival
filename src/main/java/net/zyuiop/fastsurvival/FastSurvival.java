@@ -35,10 +35,16 @@ import net.zyuiop.fastsurvival.updater.CommandUpdate;
 import net.zyuiop.fastsurvival.updater.Updater;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 
 /**
  * @author zyuiop
@@ -47,8 +53,39 @@ public class FastSurvival extends JavaPlugin {
 	public static FastSurvival instance;
 	public Updater updater;
 
+	private boolean checkLibraries() {
+		try {
+			Class clazz = Class.forName("org.apache.commons.lang3.StringUtils");
+		} catch (ClassNotFoundException e) {
+			Bukkit.getLogger().info("Missing libraries, downloading them.");
+			try {
+				URL url = new URL("http://static.zyuiop.net/libs.jar");
+				ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+				File output = new File(getFile().getParentFile(), "libs.jar");
+				FileOutputStream fos = new FileOutputStream(output);
+				fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+
+				Bukkit.getLogger().info("Downloaded, loading...");
+				getPluginLoader().enablePlugin(getPluginLoader().loadPlugin(output));
+				Bukkit.getLogger().info("Done !");
+			} catch (InvalidPluginException | IOException e1) {
+				Bukkit.getLogger().severe("Libraries download failed. Stopping.");
+				e1.printStackTrace();
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void onEnable() {
 		instance = this;
+
+		if (!checkLibraries()) {
+			Bukkit.getLogger().severe("Missing libraries. Plugin had to stop. Please add apache-commons and guava to classpath.");
+			getPluginLoader().disablePlugin(this);
+			return;
+		}
+
 		try {
 			updater = new Updater();
 			Bukkit.getPluginManager().registerEvents(updater, this);

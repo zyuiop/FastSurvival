@@ -33,8 +33,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.InvalidDescriptionException;
-import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
 import java.io.*;
@@ -128,15 +126,6 @@ public class Updater implements Listener {
 		FastSurvival.instance = null;
 		Bukkit.getServer().getPluginManager().disablePlugin(outdated);
 		outdated.getPluginLoader().disablePlugin(outdated);
-
-		/*try {
-			Plugin pl = Bukkit.getServer().getPluginManager().loadPlugin(target);
-			pl.getPluginLoader().enablePlugin(pl);
-		} catch (InvalidPluginException | InvalidDescriptionException e) {
-			e.printStackTrace();
-			sender.sendMessage(ChatColor.YELLOW + "[Updater] " + ChatColor.RED + "Failed to launch new version. Check the log for more information.");
-			return;
-		}*/
 
 		if (!plugin.delete()) {
 			plugin.deleteOnExit();
